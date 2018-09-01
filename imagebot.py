@@ -32,7 +32,14 @@ async def on_message(message):
     if any([message.content == x[LIST] for x in KEYWORDS]):
         conlist = db.search(GIF.word != None)
         replmessage = IMAGE_LIST + str([x['word'] for x in conlist]) + HOWTOUSE_LOAD
+
+        matchs = db.search(GIF.author==str(message.author.id))
+        if(matchs):
+            replmessage += "\n\n" + YOUR_IMAGES.format(message.author.name)
+            replmessage += str([x['word'] for x in matchs])
+
         await client.send_message(message.channel,replmessage)
+    
 
     #delete image
     elif any([message.content.startswith(x[DELETE]+' ') for x in KEYWORDS]):
@@ -54,7 +61,7 @@ async def on_message(message):
             try:
                 db.insert({
                     'url' : message.attachments[0]["url"],
-                    'author' : message.author.name,
+                    'author' : str(message.author.id),
                     'word' : keyword
                 })
                 replmessage = ADDED_NEW_IMAGE.format(message.author.name)

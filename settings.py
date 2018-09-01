@@ -21,3 +21,4 @@ ERROR_NOTFOUND = "에러 : 키워드 {}(으)로 등록된 이미지가 없습니
 ERROR_EXIST_ALREADY = "에러 : 키워드 {}(으)로 이미 등록된 이미지가 있습니다"
 ADDED_NEW_IMAGE = "{}님이 새로운 짤을 추가하였습니다."
 ERROR_ADD = "에러 : 짤 등록에 실패했습니다."
+YOUR_IMAGES = "{} 님이 등록하신 이미지 리스트: "
