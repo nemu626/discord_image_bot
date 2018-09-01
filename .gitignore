@@ -1,0 +1,4 @@
+db.json
+key.py
+*.pyc
+__pycache__/*
