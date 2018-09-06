@@ -4,6 +4,7 @@ import hashlib
 from tinydb import TinyDB,Query
 from settings import *
 from key import TOKEN
+from discord.member import Status
 
 db = TinyDB("./db.json")
 GIF = Query()
@@ -90,7 +91,7 @@ async def on_message(message):
             await client.send_message(message.channel,ERROR_NOTFOUND.format(keyword) + '\n'+ HOWTOUSE_REGISTER)
     elif message.content.endswith("오면 불러줘") and message.mentions:
         for member in message.mentions:
-            if member.status != 'offline':
+            if member.status != Status.offline:
                 await client.send_message(message.channel, '{}님은 이미 온라인인데여'.format(member.name))
             else:
                 ALERTLIST.append(member, message.author,message.channel);
