@@ -32,7 +32,7 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
-    alerts = [x for x in ALERTLIST if x[0] == member]
+    alerts = [x for x in ALERTLIST if x[0].id == member.id]
     for alert in alerts:
         await client.send_message(alert[2], "{} {}님이 들어왔네여".format(alert[1].mention, member.name))
 
@@ -97,7 +97,7 @@ async def on_message(message):
                 await client.send_message(message.channel, '{}님은 이미 온라인인데여'.format(member.name))
             else:
                 ALERTLIST.append((member, message.author,message.channel));
-                await client.send_message(message.channel, "{}님이 온라인이 되면 호출해드릴꼐여".format(member.name))            
+                await client.send_message(message.channel, "{}님이 온라인이 되면 호출해드릴께여".format(member.name))            
 
 
     
