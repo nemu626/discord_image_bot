@@ -91,7 +91,7 @@ async def on_message(message):
         else:
             await client.send_message(message.channel,ERROR_NOTFOUND.format(keyword) + '\n'+ HOWTOUSE_REGISTER)
 
-    elif any([message.content.endswith(x[ALERT]+' ') for x in KEYWORDS])and message.mentions:
+    elif any([message.content.endswith(x[ALERT]) for x in KEYWORDS])and message.mentions:
         for member in message.mentions:
             if member.status != Status.offline:
                 await client.send_message(message.channel, '{}님은 이미 온라인인데여'.format(member.name))
