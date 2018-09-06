@@ -2,13 +2,15 @@ KEYWORDS_KR = {
     "list": "!짤리스트",
     "load": "!짤",
     "register": "!짤등록",
-    "delete": "!짤삭제"
+    "delete": "!짤삭제",
+    "alert": "오면 불러줘"
 }
 KEYWORDS_ENG = {
     "list": "!conlist",
     "load": "!con",
     "register": "!conreg",
-    "delete": "!condel"
+    "delete": "!condel",
+    "alert": "오면 불러줘요"
 }
 
 WELCOME = "안녕하세요.짤방 등록 봇입니다"
