@@ -16,6 +16,7 @@ LIST = 'list'
 DELETE = 'delete'
 REGISTER = 'register'
 LOAD = 'load'
+ALERT = 'alert'
 
 ALERTLIST = []
 
@@ -89,12 +90,13 @@ async def on_message(message):
             await client.send_message(message.channel,matchs[0]['url'])
         else:
             await client.send_message(message.channel,ERROR_NOTFOUND.format(keyword) + '\n'+ HOWTOUSE_REGISTER)
-    elif message.content.endswith("오면 불러줘") and message.mentions:
+
+    elif any([message.content.endswith(x[ALERT]+' ') for x in KEYWORDS])and message.mentions:
         for member in message.mentions:
             if member.status != Status.offline:
                 await client.send_message(message.channel, '{}님은 이미 온라인인데여'.format(member.name))
             else:
-                ALERTLIST.append(member, message.author,message.channel);
+                ALERTLIST.append((member, message.author,message.channel));
                 await client.send_message(message.channel, "{}님이 온라인이 되면 호출해드릴꼐여".format(member.name))            
 
 
